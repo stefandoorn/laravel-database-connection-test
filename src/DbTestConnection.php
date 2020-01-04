@@ -5,43 +5,24 @@ namespace StefanDoorn\DatabaseConnection;
 use Illuminate\Console\Command;
 use Illuminate\Database\DatabaseManager as DB;
 
-class DbTestConnection extends Command
+final class DbTestConnection extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
+    /** @var string */
     protected $signature = 'db:connection {connection=mysql : Connection name}';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
+    /** @var string */
     protected $description = 'Test database connection.';
 
-    /**
-     * @var DB
-     */
+    /** @var DB */
     private $database;
 
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
     public function __construct(DB $database)
     {
         $this->database = $database;
+
         parent::__construct();
     }
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
     public function handle()
     {
         $connection = $this->argument('connection');
